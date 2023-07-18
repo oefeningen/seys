@@ -2,10 +2,9 @@
   <div class="shane_tm_hero" id="home" data-style="one">
     <div class="background">
       <div
-        class="image"
+        class="image transition"
         :style="{
-          backgroundImage:
-            'url(https://images.pexels.com/photos/937465/pexels-photo-937465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
+          backgroundImage: bg,
         }"
       ></div>
     </div>
@@ -47,14 +46,32 @@
 </template>
 
 <script>
+// import inplantingImage /from '@/assets/inplanting.png';
 export default {
   data() {
     return {
       // sliderHero: require('../../assets/img/slider/4.jpg'),
       // sliderHero: require('https://images.pexels.com/photos/937465/pexels-photo-937465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+      bg1: 'url(https://images.pexels.com/photos/937465/pexels-photo-937465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
+      imagePath: '/src/assets/inplanting.png',
+      bg: null,
     };
+  },
+  mounted() {
+    this.bg = `url(${this.imagePath})`;
+    setInterval(() => {
+      this.imagePath =
+        this.imagePath === '/src/assets/inplanting.png'
+          ? '/src/assets/slide1.jpg'
+          : '/src/assets/inplanting.png';
+      this.bg = `url(${this.imagePath})`;
+    }, 5000);
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.transition {
+  transition: background-image 1s ease;
+}
+</style>
