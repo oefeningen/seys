@@ -65,7 +65,7 @@ export default {
           ? '/src/assets/slide1.jpg'
           : '/src/assets/inplanting.png';
       this.bg = `url(${this.imagePath})`;
-    }, 5000);
+    }, 10000);
   },
 };
 </script>
